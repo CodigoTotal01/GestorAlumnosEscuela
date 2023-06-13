@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" class="form-control" id="nombre"
-                       [(ngModel)]="alumno.nombre">
+                       [(ngModel)]="model.nombre">
 <!--                *ngIf="error  && error.nombre", ahora validaeremos si es distitnto a undefined y si tiene nombre-->
                 <div class="alert alert-danger my-1" *ngIf="error?.nombre">
                     {{error.nombre}}
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="apellido">Apellido</label>
                 <input type="text" name="apellido" class="form-control" id="apellido"
-                       [(ngModel)]="alumno.apellido">
+                       [(ngModel)]="model.apellido">
                 <div class="alert alert-danger my-1" *ngIf="error  && error.apellido">
                     {{error.apellido}}
                 </div>
@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" name="email" class="form-control" id="email"
-                       [(ngModel)]="alumno.email">
+                       [(ngModel)]="model.email">
                 <div class="alert alert-danger my-1" *ngIf="error  && error.email">
                     {{error.email}}
                 </div>
@@ -38,7 +38,7 @@
 
 
             <div class="form-group mt-2">
-                <button type="button" class="btn btn-primary" (click)="alumno.id ? editar(): crear()">{{alumno.id ? 'Editar': 'Crear'}}</button>
+                <button type="button" class="btn btn-primary" (click)="model.id ? editar(): crear()">{{model.id ? 'Editar': 'Crear'}}</button>
             </div>
 
 

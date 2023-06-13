@@ -18,6 +18,11 @@ const routes: Routes = [
     component: AlumnosFormComponent
   },
   {
+    // Cuando nos quieren pasar algo por el url
+    path: 'alumnos/form/:id',
+    component: AlumnosFormComponent
+  },
+  {
     path: 'cursos',
     component: CursosComponent
   },

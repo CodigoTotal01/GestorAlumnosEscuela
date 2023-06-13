@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {AlumnoService} from "../../services/alumno.service";
 import {Alumno} from "../../models/alumno";
 
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
@@ -22,4 +24,26 @@ export class AlumnosComponent implements OnInit {
     });
   }
 
+  eliminar(alumno: Alumno):void {
+
+
+    Swal.fire({
+      title: '`Seguro que desea elimianr a ${alumno.nombre}`',
+      text: "No podra desaser esta accion",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Quiero eliminarlo'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+        this.service.eliminar(alumno.id).subscribe(() => {
+          //filter es inmutable, la original se mantiene
+          this.alumnos = this.alumnos.filter(alumnoRegistrado => alumnoRegistrado !== alumno);
+          Swal.fire("ELiminado", `Alumno ${alumno.nombre} a sido eliminado de manera correcta`,"success");
+        });
+      }
+    })
+  }
 }

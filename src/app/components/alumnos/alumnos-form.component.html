@@ -1,0 +1,47 @@
+<div class="card text-dark bg-light mb-3">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+        <button class="btn btn-secondary my-2" routerLink="/alumnos">Volver</button>
+        <form>
+            <!--            Nombre  -->
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="nombre"
+                       [(ngModel)]="alumno.nombre">
+<!--                *ngIf="error  && error.nombre", ahora validaeremos si es distitnto a undefined y si tiene nombre-->
+                <div class="alert alert-danger my-1" *ngIf="error?.nombre">
+                    {{error.nombre}}
+                </div>
+            </div>
+
+            <!--            Apellido  -->
+
+            <div class="form-group">
+                <label for="apellido">Apellido</label>
+                <input type="text" name="apellido" class="form-control" id="apellido"
+                       [(ngModel)]="alumno.apellido">
+                <div class="alert alert-danger my-1" *ngIf="error  && error.apellido">
+                    {{error.apellido}}
+                </div>
+            </div>
+
+            <!--            Email  -->
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" class="form-control" id="email"
+                       [(ngModel)]="alumno.email">
+                <div class="alert alert-danger my-1" *ngIf="error  && error.email">
+                    {{error.email}}
+                </div>
+            </div>
+
+
+            <div class="form-group mt-2">
+                <button type="button" class="btn btn-primary" (click)="alumno.id ? editar(): crear()">{{alumno.id ? 'Editar': 'Crear'}}</button>
+            </div>
+
+
+        </form>
+    </div>
+</div>

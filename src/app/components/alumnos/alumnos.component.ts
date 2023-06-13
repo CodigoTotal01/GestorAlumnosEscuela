@@ -15,6 +15,12 @@ export class AlumnosComponent implements OnInit {
 
   alumnos: Alumno[] = [];
 
+
+  totalRegistros: number = 0;
+  totalPorPagina: number = 4;
+  paginaActual: number = 0;
+  pageSizeOptions: number[]= [3, 5, 10, 25, 100];
+
   //inyeccion de dependencias
   constructor(private service: AlumnoService) { }
 

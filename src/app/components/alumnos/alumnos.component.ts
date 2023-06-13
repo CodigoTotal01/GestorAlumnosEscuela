@@ -1,55 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AlumnoService} from "../../services/alumno.service";
 import {Alumno} from "../../models/alumno";
 
-import Swal from 'sweetalert2'
+import {CommonListarComponent} from "../common-listar.component";
 
 @Component({
-  selector: 'app-alumnos',
-  templateUrl: './alumnos.component.html',
-  styleUrls: ['./alumnos.component.css']
+    selector: 'app-alumnos',
+    templateUrl: './alumnos.component.html',
+    styleUrls: ['./alumnos.component.css']
 })
-export class AlumnosComponent implements OnInit {
-
-  public titulo: string  = 'Listado de Alumnos';
-
-  alumnos: Alumno[] = [];
-
-
-  totalRegistros: number = 0;
-  totalPorPagina: number = 4;
-  paginaActual: number = 0;
-  pageSizeOptions: number[]= [3, 5, 10, 25, 100];
-
-  //inyeccion de dependencias
-  constructor(private service: AlumnoService) { }
-
-  ngOnInit(): void {
-    this.service.listar().subscribe((alumnos: Alumno[]) =>{
-        this.alumnos = alumnos
-    });
-  }
-
-  eliminar(alumno: Alumno):void {
+export
+    class AlumnosComponent
+    extends CommonListarComponent<Alumno, AlumnoService>
+    implements OnInit {
 
 
-    Swal.fire({
-      title: '`Seguro que desea elimianr a ${alumno.nombre}`',
-      text: "No podra desaser esta accion",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Quiero eliminarlo'
-    }).then((result) => {
-
-      if (result.isConfirmed) {
-        this.service.eliminar(alumno.id).subscribe(() => {
-          //filter es inmutable, la original se mantiene
-          this.alumnos = this.alumnos.filter(alumnoRegistrado => alumnoRegistrado !== alumno);
-          Swal.fire("ELiminado", `Alumno ${alumno.nombre} a sido eliminado de manera correcta`,"success");
-        });
-      }
-    })
-  }
+    protected override nombreModel: string  = Alumno.name;
+    //cuanod se define ya no es necesario
+    constructor(service: AlumnoService) {
+        super(service);
+        this.titulo = "Listado de Alumnos"
+    }
 }

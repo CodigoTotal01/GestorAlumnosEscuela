@@ -4,9 +4,9 @@
 
         <button class="btn btn-primary my-2" routerLink="/alumnos/form">Crear</button>
 <!--valida que el objeto es que si es indefinido o null no se invoca el atributo, asi que podra mapearce cuando tenga la informacion-->
-        <div class="alert alert-info" *ngIf="alumnos?.length == 0">No hay ALumnos en el sistema.</div>
+        <div class="alert alert-info" *ngIf="lista?.length == 0">No hay ALumnos en el sistema.</div>
 
-        <table class="table table-hover table-striped" *ngIf="alumnos?.length > 0">
+        <table class="table table-hover table-striped" *ngIf="lista?.length > 0">
             <thead>
             <tr>
                 <th>Id</th>
@@ -19,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let alumno of alumnos">
+            <tr *ngFor="let alumno of lista">
                 <td>{{alumno.id}}</td>
                 <td>{{alumno.nombre}}</td>
                 <td>{{alumno.apellido}}</td>
@@ -42,6 +42,9 @@
                        [pageSize]="totalPorPagina"
                        [pageIndex]="paginaActual"
                        [pageSizeOptions]="pageSizeOptions"
+                       (page)="paginar($event)"
+                       showFirstLastButtons
+                       class="float-start mx-2 "
                        aria-label="Select page">
         </mat-paginator>
 

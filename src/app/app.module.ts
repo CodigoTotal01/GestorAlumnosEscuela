@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Material
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CursosFormComponent } from './components/cursos/cursos-form.component';
+import { ExamenFormComponent } from './components/examenes/examen-form.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
         AlumnosComponent,
         CursosComponent,
         ExamenesComponent,
-        AlumnosFormComponent
+        AlumnosFormComponent,
+        CursosFormComponent,
+        ExamenFormComponent,
     ],
     //se importan todos los modulos
     imports: [

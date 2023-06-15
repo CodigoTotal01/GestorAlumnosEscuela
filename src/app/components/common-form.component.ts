@@ -32,6 +32,7 @@ export class CommonFormComponent<E extends Generic, S extends CommonService<E>> 
             if (id) {
                 this.service.ver(id).subscribe(modelo => {
                     this.model = modelo;
+                    this.titulo = "Editar " + this.nombreModelo;
                 })
             }
         })

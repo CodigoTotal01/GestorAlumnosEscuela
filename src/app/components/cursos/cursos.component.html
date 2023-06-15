@@ -1,1 +1,51 @@
-<p>cursos works!</p>
+<div class="card text-dark bg-light mb-3">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+
+        <button class="btn btn-primary my-2" routerLink="/cursos/form">Crear</button>
+
+        <div class="alert alert-info" *ngIf="lista?.length == 0">No hay Cursos en el sistema.</div>
+
+        <table class="table table-hover table-striped" *ngIf="lista?.length > 0">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Creado en</th>
+                <th>Editar</th>
+                <th>ELiminar</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let curso of lista">
+                <td>{{curso.id}}</td>
+                <td>{{curso.nombre}}</td>
+
+                <td>{{curso.createAt | date:'yyyy/MM/dd'}}</td>
+
+                <td>
+                    <button class="btn btn-secondary btn-sm" [routerLink]="['/cursos/form', curso.id]"> &#9998; </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" (click)="eliminar(curso)"> &#128465; </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <!--        Paginador -->
+        <mat-paginator [length]="totalRegistros"
+                       [pageSize]="totalPorPagina"
+                       [pageIndex]="paginaActual"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="paginar($event)"
+                       showFirstLastButtons
+                       class="float-start mx-2 "
+                       aria-label="Select page">
+        </mat-paginator>
+
+
+    </div>
+</div>

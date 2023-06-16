@@ -11,6 +11,8 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Asignaturas</th>
+                <th>Preguntas</th>
                 <th>Creado en</th>
                 <th>Editar</th>
                 <th>ELiminar</th>
@@ -21,6 +23,10 @@
             <tr *ngFor="let examen of lista">
                 <td>{{examen.id}}</td>
                 <td>{{examen.nombre}}</td>
+
+                <td>{{examen.asignaturaPadre.nombre}} --> {{examen.asignaturaHija.nombre}}</td>
+
+                <td>{{examen.preguntas.length}}</td>
 
                 <td>{{examen.createAt | date:'yyyy/MM/dd'}}</td>
 

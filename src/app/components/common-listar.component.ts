@@ -61,7 +61,7 @@ export abstract class CommonListarComponent<E extends Generic, S extends CommonS
 
 
         Swal.fire({
-            title: '`Seguro que desea elimianr a ${alumno.nombre}`',
+            title: `Seguro que desea elimianr a ${elemento.nombre}`,
             text: "No podra desaser esta accion",
             icon: 'warning',
             showCancelButton: true,

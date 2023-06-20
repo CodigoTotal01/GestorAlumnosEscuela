@@ -6,6 +6,9 @@ import {ExamenesComponent} from "./components/examenes/examenes.component";
 import {AlumnosFormComponent} from "./components/alumnos/alumnos-form.component";
 import {CursosFormComponent} from "./components/cursos/cursos-form.component";
 import {ExamenFormComponent} from "./components/examenes/examen-form.component";
+import {AsignarAlumnosComponent} from "./components/cursos/asignar-alumnos.component";
+import {AsignarExamenesComponent} from "./components/cursos/asignar-examenes.component";
+import {ResponderExamenComponent} from "./components/alumnos/responder-examen.component";
 
 const routes: Routes = [
   {
@@ -23,6 +26,11 @@ const routes: Routes = [
     // Cuando nos quieren pasar algo por el url
     path: 'alumnos/form/:id',
     component: AlumnosFormComponent
+  },
+  //Responder Examenes
+  {
+    path: 'alumnos/responder-examen/:id',
+    component: ResponderExamenComponent
   },
   {
     path: 'cursos',
@@ -47,6 +55,15 @@ const routes: Routes = [
   {
     path: 'examenes/form/:id',
     component: ExamenFormComponent
+  },
+  {
+    path: 'cursos/asignar-alumnos/:id',
+    component: AsignarAlumnosComponent
+  },
+  //   examenes
+  {
+    path: 'cursos/asignar-examenes/:id',
+    component: AsignarExamenesComponent
   }
 ];
 

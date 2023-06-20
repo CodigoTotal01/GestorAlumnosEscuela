@@ -21,20 +21,17 @@ export class AlumnoService extends CommonService<Alumno> {
 
     //enviar multipartfile
     public crearConFoto(alumno: Alumno, archivo: File): Observable<Alumno> {
-
         const formData: FormData = new FormData();
         formData.append('archivo', archivo);
         formData.append('nombre', alumno.nombre);
         formData.append('apellido', alumno.apellido);
         formData.append('email', alumno.email);
-
         //el form data se pasa, el formData queda por defecto en este tipo de contenido, por detras de esena se poblara
         return this.http.post<Alumno>(this.baseEndPoint + "/crear-con-foto", formData)
     }
 
     //enviar multipartfile
     public editarConFoto(alumno: Alumno, archivo: File): Observable<Alumno> {
-
         const formData: FormData = new FormData();
         formData.append('archivo', archivo);
         formData.append('nombre', alumno.nombre);
@@ -43,4 +40,9 @@ export class AlumnoService extends CommonService<Alumno> {
 
         return this.http.put<Alumno>(`${this.baseEndPoint}/editar-con-foto/${alumno.id}`, formData)
     }
+
+    public filtrarPorNombre(nombre: string): Observable<Alumno[]>{
+        return this.http.get<Alumno[]>(`${this.baseEndPoint}/filtrar/${nombre}`);
+    }
+
 }

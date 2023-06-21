@@ -32,6 +32,8 @@ import { ResponderExamenComponent } from './components/alumnos/responder-examen.
 import { ResponderExamenesModalComponent } from './components/alumnos/responder-examenes-modal.component';
 // responder examnes del curso, el ocmponente no se enrutara es solo un componente que se habre
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatExpansionModule} from '@angular/material/expansion';
+import { VerExamenModalComponent } from './components/alumnos/ver-examen-modal/ver-examen-modal.component';
 
 @NgModule({
     //componentes registrados dentro de este modulo
@@ -47,8 +49,10 @@ import {MatDialogModule} from "@angular/material/dialog";
         AsignarExamenesComponent,
         ResponderExamenComponent,
         ResponderExamenesModalComponent,
+        VerExamenModalComponent,
     ],
-    entryComponents: [ResponderExamenesModalComponent],
+    //para cosas en tiempo de ejecucion
+    entryComponents: [ResponderExamenesModalComponent, VerExamenModalComponent],
     //se importan todos los modulos
     imports: [
         BrowserModule,
@@ -67,7 +71,8 @@ import {MatDialogModule} from "@angular/material/dialog";
         MatTabsModule,
         MatAutocompleteModule,
         MatFormFieldModule,
-        MatDialogModule
+        MatDialogModule,
+        MatExpansionModule
     ],
     providers: [],
     bootstrap: [AppComponent]
